@@ -1,0 +1,1229 @@
+/* =========================================================
+   EXPOTEC 2026
+   Feira de Tecnologia e Inovação
+   ========================================================= */
+
+
+/* =========================================================
+   1. RESET E CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #080b12;
+    color: #f4f7fb;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background-color: #00d9ff;
+    color: #080b12;
+}
+
+
+/* =========================================================
+   2. VARIÁVEIS
+   ========================================================= */
+
+:root {
+    --background: #080b12;
+    --background-light: #0d121c;
+    --background-card: #111824;
+
+    --text: #f4f7fb;
+    --text-muted: #9ca8b8;
+
+    --primary: #00d9ff;
+    --primary-dark: #00a9c7;
+
+    --border: rgba(255, 255, 255, 0.10);
+
+    --container: 1180px;
+
+    --radius-small: 8px;
+    --radius: 16px;
+    --radius-large: 24px;
+
+    --transition: 0.3s ease;
+}
+
+
+/* =========================================================
+   3. CONTAINER
+   ========================================================= */
+
+.container {
+    width: min(100% - 40px, var(--container));
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   4. TIPOGRAFIA E ELEMENTOS GERAIS
+   ========================================================= */
+
+.section-label {
+    display: inline-block;
+    margin-bottom: 18px;
+
+    color: var(--primary);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.section-heading {
+    max-width: 720px;
+    margin-bottom: 60px;
+}
+
+.section-heading h2 {
+    margin-bottom: 18px;
+
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+}
+
+.section-heading > p:last-child {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+    padding: 0 28px;
+
+    background-color: var(--primary);
+    color: #061018;
+
+    border: 2px solid var(--primary);
+    border-radius: 50px;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    transition:
+        background-color var(--transition),
+        color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.button:hover {
+    background-color: transparent;
+    color: var(--primary);
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.15);
+}
+
+.button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   5. HEADER
+   ========================================================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-color: rgba(8, 11, 18, 0.92);
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(14px);
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 76px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.06em;
+}
+
+.logo span {
+    margin-left: 3px;
+    color: var(--primary);
+}
+
+.navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navigation a {
+    position: relative;
+
+    color: var(--text-muted);
+
+    font-size: 0.88rem;
+    font-weight: 600;
+
+    transition: color var(--transition);
+}
+
+.navigation a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--primary);
+
+    transition: width var(--transition);
+}
+
+.navigation a:hover {
+    color: var(--text);
+}
+
+.navigation a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   6. HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: calc(100vh - 76px);
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 0;
+
+    background:
+        radial-gradient(
+            circle at 75% 35%,
+            rgba(0, 217, 255, 0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(0, 217, 255, 0.05),
+            transparent 25%
+        ),
+        var(--background);
+
+    overflow: hidden;
+}
+
+
+/* Elementos decorativos */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    top: -220px;
+    right: -180px;
+
+    border: 1px solid rgba(0, 217, 255, 0.12);
+    border-radius: 50%;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    top: -320px;
+    right: -280px;
+
+    border: 1px solid rgba(0, 217, 255, 0.06);
+    border-radius: 50%;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.event-label {
+    margin-bottom: 24px;
+
+    color: var(--primary);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+}
+
+.hero h1 {
+    max-width: 900px;
+
+    margin-bottom: 30px;
+
+    font-size: clamp(3.2rem, 9vw, 7rem);
+    line-height: 0.92;
+
+    letter-spacing: -0.07em;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero-description {
+    max-width: 620px;
+
+    margin-bottom: 38px;
+
+    color: var(--text-muted);
+
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.hero-info {
+    display: flex;
+
+    margin-top: 90px;
+
+    border-top: 1px solid var(--border);
+}
+
+.info-item {
+    min-width: 150px;
+
+    padding: 24px 35px 0 0;
+    margin-right: 35px;
+
+    border-right: 1px solid var(--border);
+}
+
+.info-item:last-child {
+    border-right: none;
+}
+
+.info-item strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    font-size: 1.7rem;
+    color: var(--text);
+}
+
+.info-item span {
+    color: var(--text-muted);
+
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   7. SOBRE
+   ========================================================= */
+
+.about {
+    padding: 130px 0;
+
+    background-color: var(--background-light);
+}
+
+.about-content {
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 30px;
+}
+
+.about-text {
+    grid-row: span 2;
+
+    padding-right: 50px;
+}
+
+.about-text p {
+    margin-bottom: 24px;
+
+    color: var(--text-muted);
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.about-highlight {
+    padding: 30px;
+
+    background-color: var(--background-card);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transition:
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.about-highlight:hover {
+    border-color: rgba(0, 217, 255, 0.4);
+    transform: translateY(-5px);
+}
+
+.highlight-number {
+    display: block;
+
+    margin-bottom: 30px;
+
+    color: var(--primary);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.about-highlight h3 {
+    margin-bottom: 10px;
+
+    font-size: 1.3rem;
+}
+
+.about-highlight p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   8. PROGRAMAÇÃO
+   ========================================================= */
+
+.schedule {
+    padding: 130px 0;
+
+    background-color: var(--background);
+}
+
+.schedule-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.schedule-card {
+    display: grid;
+
+    grid-template-columns: 150px 1fr;
+
+    padding: 35px;
+
+    background-color: var(--background-card);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transition:
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.schedule-card:hover {
+    border-color: rgba(0, 217, 255, 0.35);
+    transform: translateX(5px);
+}
+
+.schedule-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.schedule-date span {
+    color: var(--primary);
+
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.schedule-date p {
+    margin-top: 5px;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+
+.schedule-content {
+    padding-left: 35px;
+
+    border-left: 1px solid var(--border);
+}
+
+.schedule-content h3 {
+    margin-bottom: 22px;
+
+    font-size: 1.35rem;
+}
+
+.schedule-content ul {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 30px;
+}
+
+.schedule-content li {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.schedule-content time {
+    display: inline-block;
+
+    width: 48px;
+
+    color: var(--primary);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   9. EXPERIÊNCIAS
+   ========================================================= */
+
+.experiences {
+    padding: 130px 0;
+
+    background-color: var(--background-light);
+}
+
+.experience-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.experience-card {
+    position: relative;
+
+    min-height: 340px;
+
+    padding: 35px;
+
+    background-color: var(--background-card);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    transition:
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.experience-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background-color: var(--primary);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform var(--transition);
+}
+
+.experience-card:hover {
+    border-color: rgba(0, 217, 255, 0.35);
+    transform: translateY(-8px);
+}
+
+.experience-card:hover::before {
+    transform: scaleX(1);
+}
+
+.card-number {
+    margin-bottom: 65px;
+
+    color: var(--primary);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.experience-card h3 {
+    margin-bottom: 15px;
+
+    font-size: 1.5rem;
+}
+
+.experience-card p {
+    margin-bottom: 25px;
+
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+.experience-card a {
+    color: var(--primary);
+
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.experience-card a::after {
+    content: " →";
+}
+
+
+/* =========================================================
+   10. GALERIA
+   ========================================================= */
+
+.gallery {
+    padding: 130px 0;
+
+    background-color: var(--background);
+}
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 250px 250px;
+
+    gap: 18px;
+}
+
+.gallery-item {
+    position: relative;
+
+    height: 100%;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background-color: var(--background-card);
+    border-radius: var(--radius);
+}
+
+.gallery-large {
+    grid-row: span 2;
+}
+
+.gallery-item img {
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.gallery-item::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.8),
+            transparent 60%
+        );
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item figcaption {
+    position: absolute;
+
+    left: 25px;
+    bottom: 22px;
+
+    z-index: 1;
+
+    color: #ffffff;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   11. LOCALIZAÇÃO
+   ========================================================= */
+
+.location {
+    padding: 110px 0;
+
+    background-color: var(--background-light);
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.location-content {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+
+    align-items: center;
+}
+
+.location h2 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.location address {
+    display: flex;
+    flex-direction: column;
+
+    padding: 35px;
+
+    background-color: var(--background-card);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    font-style: normal;
+}
+
+.location address strong {
+    margin-bottom: 15px;
+
+    font-size: 1.1rem;
+}
+
+.location address span {
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   12. CONTATO / CTA
+   ========================================================= */
+
+.contact {
+    position: relative;
+
+    padding: 150px 0;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 217, 255, 0.13),
+            transparent 40%
+        ),
+        var(--background);
+}
+
+.contact-content {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.contact .section-label {
+    margin-bottom: 25px;
+}
+
+.contact h2 {
+    margin-bottom: 25px;
+
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+}
+
+.contact p:not(.section-label) {
+    max-width: 600px;
+
+    margin: 0 auto 35px;
+
+    color: var(--text-muted);
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   13. FOOTER
+   ========================================================= */
+
+.footer {
+    padding: 70px 0 25px;
+
+    background-color: #05070c;
+
+    border-top: 1px solid var(--border);
+}
+
+.footer-main {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+
+    padding-bottom: 60px;
+}
+
+.footer-brand p {
+    margin-top: 12px;
+
+    color: var(--text-muted);
+
+    font-size: 0.85rem;
+}
+
+.footer h2 {
+    margin-bottom: 20px;
+
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.footer-navigation ul,
+.footer-contact ul {
+    display: grid;
+    gap: 10px;
+}
+
+.footer-navigation a,
+.footer-contact a {
+    color: var(--text-muted);
+
+    font-size: 0.85rem;
+
+    transition: color var(--transition);
+}
+
+.footer-navigation a:hover,
+.footer-contact a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 25px;
+
+    border-top: 1px solid var(--border);
+}
+
+.footer-bottom p {
+    color: #697485;
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   14. RESPONSIVIDADE - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .navigation ul {
+        gap: 18px;
+    }
+
+    .hero {
+        min-height: auto;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-text {
+        grid-column: span 2;
+        grid-row: auto;
+
+        padding-right: 0;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .experience-card:last-child {
+        grid-column: span 2;
+    }
+
+    .location-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+    }
+}
+
+
+/* =========================================================
+   15. RESPONSIVIDADE - CELULAR
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: min(100% - 30px, var(--container));
+    }
+
+    /* HEADER */
+
+    .header .container {
+        min-height: 68px;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .navigation ul {
+        gap: 14px;
+    }
+
+    .navigation a {
+        font-size: 0.7rem;
+    }
+
+    .navigation li:nth-child(3),
+    .navigation li:nth-child(4) {
+        display: none;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding: 90px 0 70px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 16vw, 5rem);
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .hero-info {
+        margin-top: 60px;
+    }
+
+    .info-item {
+        min-width: 0;
+
+        flex: 1;
+
+        padding-right: 15px;
+        margin-right: 15px;
+    }
+
+    .info-item strong {
+        font-size: 1.4rem;
+    }
+
+    .info-item span {
+        font-size: 0.65rem;
+    }
+
+
+    /* SEÇÕES */
+
+    .about,
+    .schedule,
+    .experiences,
+    .gallery {
+        padding: 90px 0;
+    }
+
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+        font-size: 2.3rem;
+    }
+
+
+    /* SOBRE */
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-text {
+        grid-column: auto;
+    }
+
+
+    /* PROGRAMAÇÃO */
+
+    .schedule-card {
+        grid-template-columns: 1fr;
+
+        padding: 25px;
+    }
+
+    .schedule-date {
+        margin-bottom: 25px;
+    }
+
+    .schedule-date span {
+        font-size: 2.5rem;
+    }
+
+    .schedule-content {
+        padding-left: 0;
+
+        border-left: none;
+        border-top: 1px solid var(--border);
+
+        padding-top: 25px;
+    }
+
+    .schedule-content ul {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* EXPERIÊNCIAS */
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-card:last-child {
+        grid-column: auto;
+    }
+
+    .experience-card {
+        min-height: auto;
+    }
+
+
+    /* GALERIA */
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 250px 200px 200px;
+    }
+
+    .gallery-large {
+        grid-row: auto;
+    }
+
+
+    /* LOCALIZAÇÃO */
+
+    .location {
+        padding: 90px 0;
+    }
+
+    .location-content {
+        gap: 35px;
+    }
+
+    .location h2 {
+        font-size: 2.8rem;
+    }
+
+
+    /* CONTATO */
+
+    .contact {
+        padding: 100px 0;
+    }
+
+    .contact h2 {
+        font-size: 3.2rem;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        padding-top: 55px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+
+/* =========================================================
+   16. CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .container {
+        width: min(100% - 24px, var(--container));
+    }
+
+    .navigation {
+        max-width: 65%;
+    }
+
+    .navigation ul {
+        justify-content: flex-end;
+    }
+
+    .navigation li:nth-child(2) {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 3.1rem;
+    }
+
+    .hero-info {
+        gap: 0;
+    }
+
+    .info-item {
+        padding-right: 10px;
+        margin-right: 10px;
+    }
+
+    .info-item strong {
+        font-size: 1.2rem;
+    }
+
+    .info-item span {
+        font-size: 0.58rem;
+    }
+
+    .contact h2 {
+        font-size: 2.7rem;
+    }
+}
+
+
+/* =========================================================
+   17. ACESSIBILIDADE
+   ========================================================= */
+
+/* Usuários que preferem menos movimento */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
